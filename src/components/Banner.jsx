@@ -9,7 +9,7 @@ export function Banner({
   size = [5, 2, 2],
   isTrigger = false,
 }) {
-  const texture = useTexture(`/assets/images/logo.webp`);
+  const texture = useTexture(`/assets/images/logo.png`);
   const [info, setInfo] = useState(false);
   const [ref] = useBox(() => ({
     isTrigger,

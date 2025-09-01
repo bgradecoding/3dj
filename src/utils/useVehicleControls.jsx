@@ -67,14 +67,8 @@ export const useVehicleControls = (vehicleApi, chassisApi) => {
     }
   }, [controls, vehicleApi, chassisApi]);
 
-  const onHandleHistory = () => {
-    const url = "https://aipg.lgcns.com/";
-    window.open(url, "_blank");
-  };
-
   useEffect(() => {
     if (controls.Enter && motionStage) {
-      onHandleHistory();
       setControls((prevControls) => ({
         ...prevControls,
         Enter: false,

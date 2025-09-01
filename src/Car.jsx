@@ -5,7 +5,7 @@ import { useWheels } from "./utils/useWheels";
 import { useVehicleControls } from "./utils/useVehicleControls";
 import { Vector3 } from "three";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { isStartScene, stage1, stage2 } from "./utils/atom";
+import { isStartScene, stage1, stage2, stage4, stage5 } from "./utils/atom";
 import { motion } from "framer-motion-3d";
 import useFollowCam from "./utils/useFollowCam"
 import { CarModel } from "./components/CarModel";
@@ -19,6 +19,8 @@ export function Car() {
   const worldPosition = useMemo(() => new Vector3(), [])
   const setStage1 = useSetRecoilState(stage1);
   const setStage2 = useSetRecoilState(stage2);
+  const setStage4 = useSetRecoilState(stage4);
+  const setStage5 = useSetRecoilState(stage5);
   const isStart = useRecoilValue(isStartScene);
 
   const position = [0, 0.1, 0];
@@ -82,6 +84,8 @@ export function Car() {
       makeFollowCam();
       makeStage1();
       makeStage2();
+      makeStage4();
+      makeStage5();
     }
   });
 
@@ -105,6 +109,24 @@ export function Car() {
       setStage2(true);
     }else{
       setStage2(false);
+    }
+  }
+
+  function makeStage4(){
+    const chassisPosition = new Vector3().setFromMatrixPosition(chassisBody.current.matrixWorld);
+    if ( Math.abs(5 - chassisPosition.x) < 0.7 && Math.abs(4 - chassisPosition.z) < 0.6){
+      setStage4(true);
+    }else{
+      setStage4(false);
+    }
+  }
+
+  function makeStage5(){
+    const chassisPosition = new Vector3().setFromMatrixPosition(chassisBody.current.matrixWorld);
+    if ( Math.abs(7 - chassisPosition.x) < 0.7 && Math.abs(4 - chassisPosition.z) < 0.6){
+      setStage5(true);
+    }else{
+      setStage5(false);
     }
   }
 

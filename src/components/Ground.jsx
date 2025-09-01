@@ -13,12 +13,14 @@ import { Road } from "./Road";
 import { PlayGround } from "./PlayGround";
 import { Knot } from "./Knot";
 import { MotionStage3 } from "./MotionStage3";
+import { MotionStage4 } from "./MotionStage4";
+import { MotionStage5 } from "./MotionStage5";
 import { Ball2 } from "./Ball2";
 import { BigWheel } from "./BigWheel";
 import AllTree from "./AllTree";
 import { TextGroup } from "./TextGroup";
 
-export function Ground() {
+export function Ground({ onOpenModal }) {
   const [ref] = usePlane(
     () => ({
       type: "Static",
@@ -34,7 +36,8 @@ export function Ground() {
         <group ref={ref}>
           <mesh castShadow receiveShadow>
             <planeGeometry args={[100, 100]} />
-            <shadowMaterial attach="material" color="#aa7d39" />
+            <meshStandardMaterial color="#34495e" roughness={0.8} metalness={0.1} />
+            <shadowMaterial attach="material" color="#aa7d39" transparent opacity={0.5} />
           </mesh>
         </group>
         <Tile position={[0, 0, 0.4]} />
@@ -72,7 +75,7 @@ export function Ground() {
 
         <RoadSign position={[-0.1, 0.46, 6.5]} />
         <Ball2 position={[1, 0.1, 6]} />
-        <BigWheel position={[2, 0.1, 6]} />
+        {/* <BigWheel position={[2, 0.1, 6]} /> */}
 
         <PlayGround position={[7, 0, 0.5]} />
         <Knot
@@ -81,7 +84,9 @@ export function Ground() {
           rotation={[0, Math.PI / 2, 0]}
         />
 
-        <MotionStage position={[3, 0.55, 4]} />
+        <MotionStage position={[3, 0.55, 4]} onOpenModal={onOpenModal} />
+        <MotionStage4 position={[5, 0.55, 4]} onOpenModal={onOpenModal} />
+        <MotionStage5 position={[7, 0.55, 4]} onOpenModal={onOpenModal} />
         <MotionStage2 position={[-4, 0.55, 5.5]} />
         <MotionStage3 position={[7, 0.55, -1]} />
       </group>

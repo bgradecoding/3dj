@@ -1,17 +1,18 @@
-body, html, #root {
+body,
+html,
+#root {
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   /* background: rgb(250, 220, 123); */
-  background:
-        linear-gradient(rgb(241, 193, 79), transparent),
-        linear-gradient(to top left, rgb(254, 206, 49), transparent),
-        linear-gradient(to top right, rgb(252, 205, 96), transparent);
-    background-blend-mode: screen;
+  background: linear-gradient(rgb(241, 193, 79), transparent),
+    linear-gradient(to top left, rgb(254, 206, 49), transparent),
+    linear-gradient(to top right, rgb(252, 205, 96), transparent);
+  background-blend-mode: screen;
 }
 
-.information{
+.information {
   border-radius: 12px;
   padding: 5px 20px;
   height: auto;
@@ -21,7 +22,7 @@ body, html, #root {
   font-size: 22px;
 }
 
-.information.enter{
+.information.enter {
   border-radius: 12px;
   width: 30px;
   padding: 10px;
@@ -33,13 +34,12 @@ body, html, #root {
   font-size: 13px;
 }
 
-
-.information.enter img{
+.information.enter img {
   width: 100%;
   height: auto;
 }
 
-.information.enter p{
+.information.enter p {
   margin: 0;
   padding: 0;
   margin-top: 0.5rem;
@@ -48,22 +48,22 @@ body, html, #root {
 .loader {
   width: 48px;
   height: 48px;
-  border: 5px solid #FFF;
+  border: 5px solid #fff;
   border-bottom-color: rgb(250, 220, 123);
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  }
+}
 
 @keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-} 
+}
 
 .reset-btn {
   cursor: pointer;
@@ -75,7 +75,7 @@ body, html, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: max(1.2500vw, 16px);
+  font-size: max(1.25vw, 16px);
   border-radius: 50%;
   border: 2px solid white;
   overflow: hidden;
@@ -83,13 +83,13 @@ body, html, #root {
   transition: 500ms ease-in-out;
 }
 
-.reset-btn p{
+.reset-btn p {
   position: absolute;
   z-index: 1;
   text-align: center;
 }
 
-.reset-btn img{
+.reset-btn img {
   filter: blur(5px);
   -webkit-filter: blur(5px);
   width: 100%;
@@ -103,13 +103,13 @@ body, html, #root {
   background: rgba(252, 252, 252, 1);
 }
 
-.reset-btn:hover img{
+.reset-btn:hover img {
   filter: inherit;
   -webkit-filter: inherit;
   mix-blend-mode: inherit;
 }
 
-.click-info{
+.click-info {
   border-radius: 50%;
   padding: 7px;
   width: 40px;
@@ -123,7 +123,7 @@ body, html, #root {
   position: relative;
 }
 
-.click-info span{
+.click-info span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,8 +136,8 @@ body, html, #root {
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
-.click-info:after{
-  content: '';
+.click-info:after {
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -151,7 +151,7 @@ body, html, #root {
   margin-bottom: -8px;
 }
 
-.keybord-container{
+.keybord-container {
   display: none;
   justify-content: center;
   align-items: center;
@@ -161,7 +161,7 @@ body, html, #root {
   bottom: max(5vw, 10px);
 }
 
-.keybord-container .arrow{
+.keybord-container .arrow {
   width: 60px;
   height: 60px;
   background-size: 240px 60px;
@@ -169,7 +169,7 @@ body, html, #root {
   opacity: 0.8;
 }
 
-.keybord-container .row{
+.keybord-container .row {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,12 +192,12 @@ body, html, #root {
 }
 
 @media screen and (max-width: 1280px) {
-  .keybord-container{
+  .keybord-container {
     display: flex;
   }
 }
 
-.calls{
+.calls {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -206,4 +206,205 @@ body, html, #root {
   padding: 5px 20px;
   color: white;
   font-size: 22px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 10001;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10002;
+}
+
+.modal-close-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Video Modal Styles */
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.modal-header p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.video-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.control-btn {
+  padding: 15px 20px;
+  border: 2px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+.control-btn:hover:not(:disabled) {
+  background: #007bff;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.control-btn:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.control-btn:disabled:hover {
+  background: white;
+  color: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Loading and Error Styles */
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #666;
+  text-align: center;
+}
+
+.loading-indicator p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+}
+
+.loading-indicator::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #d32f2f;
+  text-align: center;
+  background: #ffebee;
+  border-radius: 8px;
+  border: 1px solid #ffcdd2;
+}
+
+.error-message p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+}
+
+.error-message button {
+  padding: 10px 20px;
+  border: 2px solid #d32f2f;
+  background: white;
+  color: #d32f2f;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.error-message button:hover {
+  background: #d32f2f;
+  color: white;
 }

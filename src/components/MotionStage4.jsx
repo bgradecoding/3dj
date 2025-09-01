@@ -2,14 +2,14 @@ import { useBox } from "@react-three/cannon";
 import { Html, useGLTF, useTexture } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { useRecoilValue } from "recoil";
-import { stage1, isModalOpen } from "../utils/atom";
+import { stage4, isModalOpen } from "../utils/atom";
 import Picture from "./Picture";
 import { useEffect } from "react";
 
 useGLTF.preload(`/assets/models/popup.glb`);
 
-export const MotionStage = ({ position, onOpenModal }) => {
-  const texture = useTexture(`/assets/images/mailagent.png`);
+export const MotionStage4 = ({ position, onOpenModal }) => {
+  const texture = useTexture(`/assets/images/cloud.png`);
   const [ref] = useBox(() => ({
     args: [1, 1, 0.3],
     position,
@@ -17,7 +17,7 @@ export const MotionStage = ({ position, onOpenModal }) => {
     mass: 5,
   }));
 
-  const stage = useRecoilValue(stage1);
+  const stage = useRecoilValue(stage4);
   const modalOpen = useRecoilValue(isModalOpen);
   const { nodes, materials } = useGLTF(`/assets/models/popup.glb`);
 
@@ -27,17 +27,17 @@ export const MotionStage = ({ position, onOpenModal }) => {
 
   useEffect(() => {
     const handleKeyPress = (event) => {
-      if (event.key === 'Enter' && stage && onOpenModal && !modalOpen) {
-        onOpenModal('stage1');
+      if (event.key === "Enter" && stage && onOpenModal && !modalOpen) {
+        onOpenModal("stage4");
       }
     };
 
     if (stage && !modalOpen) {
-      window.addEventListener('keydown', handleKeyPress);
+      window.addEventListener("keydown", handleKeyPress);
     }
 
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener("keydown", handleKeyPress);
     };
   }, [stage, onOpenModal, modalOpen]);
 
@@ -55,7 +55,7 @@ export const MotionStage = ({ position, onOpenModal }) => {
                 transition: {
                   duration: 2,
                   ease: "easeInOut",
-                  delay: 0.3,
+                  delay: 0, // 딜레이 제거
                   repeat: Infinity,
                 },
               }
@@ -63,7 +63,7 @@ export const MotionStage = ({ position, onOpenModal }) => {
                 opacity: 0.1,
                 y: 0.05,
                 transition: {
-                  duration: 0.3,
+                  duration: 0.2, // 더 빠른 전환
                   ease: "easeInOut",
                 },
               }
