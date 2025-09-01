@@ -47,7 +47,9 @@ export const useVehicleControls = (vehicleApi, chassisApi) => {
     } else {
       vehicleApi.applyEngineForce(0, 2);
       vehicleApi.applyEngineForce(0, 3);
-      // chassisApi.velocity.set(0,0,0)
+      // 자동차가 완전히 멈추도록 속도를 0으로 설정
+      chassisApi.velocity.set(0, 0, 0);
+      chassisApi.angularVelocity.set(0, 0, 0);
     }
 
     if (controls.ArrowLeft) {
